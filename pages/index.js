@@ -5,13 +5,22 @@ import {useState} from "react";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState();
 
-  const handleChange = () => {
-    const inputValue = "null";
-    setInputValue(inputValue);
-    console.log(inputValue);
+  let data = ""
+
+  const [walletKey, setWalletKey] = useState()
+
+  const getWalletKey = () => {
+    data = walletKey;
   };
+
+  const change = event => {
+    setWalletKey(event.target.value)
+  }
+
+  const alertWalletKey = () => {
+    alert(data)
+  }
 
   return (
     <main
@@ -40,16 +49,24 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='pt-20 place-content-center'>
-          <input type="text" placeholder="Your Wallet Here" className="input input-bordered w-96 bg-neutral-800"/>
-          <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}} 
-          onClick={()=>{
-            handleChange();
-          }}
-          >Get Started</button>
+      <div className = 'pt-20 place-content-center'>
+        <input type = "text"
+          placeholder = "Your Wallet Here"
+          className = "input input-bordered w-96 bg-neutral-800"
+          onChange = {change}
+          value = {walletKey}/>
+        <button className="btn m-2 btn-active btn-ghost text-red-200"
+          style = { { backgroundColor: "#262626" } }
+          onClick = {getWalletKey}>Get Started</button>
       </div>
       <div className='place-content-center'>
         <div className='divider py-5' style={{width: "40vw"}}></div>
+      </div>
+
+      <div>
+        <button className='bg-pink-400 px-4 py-1 rounded-md'
+        onClick = {alertWalletKey}> Oliwi apriétame por fi UwU
+        </button>
       </div>
       
 
