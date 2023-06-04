@@ -75,7 +75,7 @@ export default function Home() {
           <summary className="m-1 btn bg-stone-900">ඞ</summary>
           <ul className="p-2 shadow menu dropdown-content bg-neutral-800 rounded-md w-52">
             <li><button onClick={refreshPage}>Log-out</button></li>
-            <li><a><button>Help</button></a></li>
+            <li><a className="link link-hover" href='https://iconicmarkets.io'>Help</a></li>
           </ul>
         </details>
         </div>
@@ -97,7 +97,7 @@ export default function Home() {
 
       <div className="flex flex-col pb-5" style={{width: "30vw"}}> 
           <div>
-            <h1 className='text-red-200 text-lg pb-1 p-3'>Recent Gambles</h1>
+            <h1 className='text-red-200 text-lg pb-1 pt-10 p-3'>Recent Gambles</h1>
           </div>
 
           <div className="grid h-50 card bg-neutral-800 rounded-box place-items-center shadow-inner">
