@@ -6,12 +6,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [inputValue, setInputValue] = useState();
- 
+
   const handleChange = () => {
     const inputValue = "null";
     setInputValue(inputValue);
     console.log(inputValue);
   };
+
+  const change = event => {
+    setWalletKey(event.target.value)
+  }
+
+  const alertWalletKey = () => {
+    alert(data)
+  }
 
   return (
     <main
@@ -40,18 +48,20 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='bg-cover bg-bottom' style={{backgroundImage: "url(https://pixy.org/download/4752790/)", width:'100%', justifyContent: "center" }}>
-        <div className='py-20 object-center' style={{marginLeft: "32vw"}}>
-            <input type="text" placeholder="Your Wallet Here" className="input input-bordered w-96 bg-neutral-800"/>
-            <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}} 
-            onClick={()=>{
-              handleChange();
-            }}
-            >Get Started</button>
-        </div>
+      <div className='pt-20 place-content-center'>
+          <input type="text" placeholder="Your Wallet Here" className="input input-bordered w-96 bg-neutral-800"/>
+          <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}} 
+          onClick={()=>{
+            handleChange();
+          }}
+          >Get Started</button>
       </div>
+      <div className='place-content-center'>
+        <div className='divider py-5' style={{width: "40vw"}}></div>
+      </div>
+      
 
-      <div className="flex flex-col py-5" style={{width: "30vw"}}> 
+      <div className="flex flex-col pb-5" style={{width: "30vw"}}> 
           <div>
             <h1 className='text-red-200 text-lg pb-1 p-3'>Recent Gambles</h1>
           </div>
