@@ -17,7 +17,6 @@ export default function Home() {
   const [pubkeyFilter, setPubkeyFilter] = useState("");
 
   const [paris, setParis] = useState(null);
-  const usdcDec = 1_000_000;
 
   const getWalletKey = () => {
   
@@ -77,7 +76,7 @@ export default function Home() {
       let vecLamports = [];
 
       for (let i = 0; i < parimutuels.length; i++) {
-        vecLamports.push(parimutuels[i].account.lamports);
+        vecLamports.push((parimutuels[i].account.lamports) / 1_000_000);
         vecHoneypots.push(parimutuels[i].info.parimutuel.honeypot);
         netProfit = netProfit + vecLamports[i]
         // console.log("Pubkey:", i, parimutuels[i].pubkey.toBase58())
@@ -147,9 +146,8 @@ export default function Home() {
                 <thead className='text-red-200'>
                   <tr>
                     <th></th>
-                    <th>Bet</th>
                     <th>Amount</th>
-                    <th>Date</th>
+                    <th>Bet</th>
                   </tr>
                 </thead>
                 <tbody className='text-neutral-600'>
@@ -157,36 +155,31 @@ export default function Home() {
                   <tr>
                     <th>1</th>
                   <td> {vecLamports[0]} </td>
-                  
-                  <td> {  } </td>
+                  <td> { vecHoneypots[0] } </td>
                   </tr>
                   {/* row 2 */}
                   <tr>
                     <th>2</th>
-                    <td>---</td>
                     <td> { vecLamports[1] } </td>
-                    <td>---</td>
+                    <td> { vecHoneypots[1] } </td>
                   </tr>
                   {/* row 3 */}
                   <tr>
                     <th>3</th>
-                    <td>---</td>
                     <td> { vecLamports[2] } </td>
-                    <td>---</td>
+                    <td> { vecHoneypots[2] } </td>
                   </tr>
                   {/* row 4 */}
                   <tr>
                     <th>4</th>
-                    <td>---</td>
                     <td> { vecLamports[3] } </td>
-                    <td>---</td>
+                    <td> { vecHoneypots[3] } </td>
                   </tr>
                   {/* row 5 */}
                   <tr>
                     <th>5</th>
-                    <td>---</td>
                     <td> { vecLamports[4] } </td>
-                    <td>---</td>
+                    <td> { vecHoneypots[4] } </td>
                   </tr>
                 </tbody>
               </table>
