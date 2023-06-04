@@ -19,21 +19,7 @@ export default function Home() {
   const [paris, setParis] = useState(null);
 
   const getWalletKey = () => {
-  
     setPubkeyFilter(walletKey);
-
-     //obtener el valor del field
-
-    //conectar con hxro 
-
-
-    //obtener las apuestas
-
-
-    //filtrar con el numero de wallet
-    //mostrar el resultado
-
-
   }
 
   const filterByPubkey = () => {
@@ -154,31 +140,31 @@ export default function Home() {
                   {/* row 1 */}
                   <tr>
                     <th>1</th>
-                  <td> {vecLamports[0]} </td>
+                  <td> { parseFloat(vecLamports[0]).toFixed(2) } </td>
                   <td> { vecHoneypots[0] } </td>
                   </tr>
                   {/* row 2 */}
                   <tr>
                     <th>2</th>
-                    <td> { vecLamports[1] } </td>
+                    <td> { parseFloat(vecLamports[1]).toFixed(2) } </td>
                     <td> { vecHoneypots[1] } </td>
                   </tr>
                   {/* row 3 */}
                   <tr>
                     <th>3</th>
-                    <td> { vecLamports[2] } </td>
+                    <td> { parseFloat(vecLamports[2]).toFixed(2) } </td>
                     <td> { vecHoneypots[2] } </td>
                   </tr>
                   {/* row 4 */}
                   <tr>
                     <th>4</th>
-                    <td> { vecLamports[3] } </td>
+                    <td> { parseFloat(vecLamports[3]).toFixed(2) } </td>
                     <td> { vecHoneypots[3] } </td>
                   </tr>
                   {/* row 5 */}
                   <tr>
                     <th>5</th>
-                    <td> { vecLamports[4] } </td>
+                    <td> { parseFloat(vecLamports[4]).toFixed(2) } </td>
                     <td> { vecHoneypots[4] } </td>
                   </tr>
                 </tbody>
@@ -202,7 +188,7 @@ export default function Home() {
             <div className="stats bg-neutral-800" style={{width: "85%"}}> 
               <div className="stat">
                   <div className="stat-title">Profit</div>
-                <div className="stat-value text-red-200">$ { netProfit }</div>
+                <div className="stat-value text-red-200">$ { parseFloat(netProfit).toFixed(2) }</div>
                   <div className="stat-desc">Net Gain</div>
                 </div>
                 
@@ -214,7 +200,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-      </div>    
+      </div>
     
     </main>
   )
