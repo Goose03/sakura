@@ -18,25 +18,15 @@ export default function Home() {
     data = walletKey;
     console.log(data)
 
-
-
     //conectar con hxro 
 
     
     //obtener las apuestas
 
-    //filtrar con el numero de wallet 
-    //mostrar el resultado 
+    //filtrar con el numero de wallet
+    //mostrar el resultado
 
-
-
-
-
-
-
-
-
-
+    
   }
 
   const change = event => {
@@ -46,13 +36,31 @@ export default function Home() {
   function refreshPage() {
     window.location.reload(false);
   }
-  useEffect(() => {
-    const config = sdk.DEV_CONFIG
-    const rpc = web3.clusterApiUrl("devnet")
-    const connection = new web3.Connection(rpc, "confirmed")
 
-    console.log("Conectando con la red", config, rpc, connection)
-  }, [])
+  useEffect(() => {
+    const getParis = async () => {
+
+      const config = sdk.DEV_CONFIG;
+      const rpc = web3.clusterApiUrl("devnet");
+      const connection = new web3.Connection(rpc, "confirmed");
+
+      console.log("Conectando con la red", config, rpc, connection);
+
+      const parimutuelWeb3 = new sdk.ParimutuelWeb3(config, connection);
+
+      console.log("ParimutuelWeb3", parimutuelWeb3);
+
+      const market = sdk.MarketPairEnum.BTCUSD;
+      console.log("Criptomoneda: ", market);
+
+      const markets = sdk.getMarketPubkeys(config, market);
+      console.log("Intervalos de tiempo", markets);
+
+      const parimutuels = await parimutuelWeb3.getParimutuels(markets, 5);
+      console.log("No c", parimutuels);
+    };
+    getParis();
+  }, []);
 
   return (
     <main
