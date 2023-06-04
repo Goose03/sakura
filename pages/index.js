@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import {useState} from "react";
+import { useEffect, useState } from "react";
+import * as web3 from "@solana/web3.js"
+import * as sdk from "@hxronetwork/parimutuelsdk"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,9 +12,32 @@ export default function Home() {
   const [walletKey, setWalletKey] = useState()
 
   const getWalletKey = () => {
-    console.log(walletKey);
+  
+
+     //obtener el valor del field
     data = walletKey;
-  };
+    console.log(data)
+
+
+
+    //conectar con hxro 
+
+    
+    //obtener las apuestas
+
+    //filtrar con el numero de wallet 
+    //mostrar el resultado 
+
+
+
+
+
+
+
+
+
+
+  }
 
   const change = event => {
     setWalletKey(event.target.value)
@@ -21,6 +46,13 @@ export default function Home() {
   function refreshPage() {
     window.location.reload(false);
   }
+  useEffect(() => {
+    const config = sdk.DEV_CONFIG
+    const rpc = web3.clusterApiUrl("devnet")
+    const connection = new web3.Connection(rpc, "confirmed")
+
+    console.log("Conectando con la red", config, rpc, connection)
+  }, [])
 
   return (
     <main
@@ -63,7 +95,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col py-5" style={{width: "30vw"}}> 
+      <div className="flex flex-col pb-5" style={{width: "30vw"}}> 
           <div>
             <h1 className='text-red-200 text-lg pb-1 p-3'>Recent Gambles</h1>
           </div>
