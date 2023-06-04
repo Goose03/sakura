@@ -82,7 +82,7 @@ export default function Home() {
         // console.log("Pubkey:", i, parimutuels[i].pubkey.toBase58())
       }
 
-      setNetProfit(netProfit / 1_000_000)
+      setNetProfit(netProfit)
       setvecLamports(vecLamports)
       setvecHoneypots(vecHoneypots)
 
@@ -154,7 +154,7 @@ export default function Home() {
                   {/* row 1 */}
                   <tr>
                     <th>1</th>
-                  <td> {vecLamports[0]} </td>
+                  <td> {vecLamports[0] } </td>
                   <td> { vecHoneypots[0] } </td>
                   </tr>
                   {/* row 2 */}
