@@ -1,9 +1,18 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import {useState} from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [inputValue, setInputValue] = useState();
+
+  const handleChange = () => {
+    const inputValue = "null";
+    setInputValue(inputValue);
+    console.log(inputValue);
+  };
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-2 bg-stone-900 ${inter.className}`}
@@ -24,26 +33,33 @@ export default function Home() {
         <details className="dropdown dropdown-end mb-1">
           <summary className="m-1 btn bg-stone-900">ඞ</summary>
           <ul className="p-2 shadow menu dropdown-content bg-neutral-800 rounded-box w-52">
-            <li><a>Login-out</a></li>
+            <li><a>Log-out</a></li>
             <li><a>Help</a></li>
           </ul>
         </details>
         </div>
       </div>
 
-      <div className='pt-20'>
+      <div className='pt-20 place-content-center'>
           <input type="text" placeholder="Your Wallet Here" className="input input-bordered w-96 bg-neutral-800"/>
-          <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}}>Get Started</button>
+          <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}} 
+          onClick={()=>{
+            handleChange();
+          }}
+          >Get Started</button>
       </div>
+      <div className='place-content-center'>
+        <div className='divider py-5' style={{width: "40vw"}}></div>
+      </div>
+      
 
-      <div className="flex flex-col">
-        <div className="divider w-full py-10 w-80"></div> 
+      <div className="flex flex-col pb-5" style={{width: "30vw"}}> 
           <div>
             <h1 className='text-red-200 text-lg pb-1 p-3'>Recent Gambles</h1>
           </div>
 
           <div className="grid h-50 card bg-neutral-800 rounded-box place-items-center shadow-inner">
-            <div className="overflow-x-auto box-content">
+            <div className="overflow-x-auto box-content" style={{width: "29vw"}}>
               <table className="table ">
                 {/* head */}
                 <thead className='text-red-200'>
@@ -96,12 +112,20 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <div className="flex flex-col w-full">
-          <div className="divider py-10"></div> 
-          <div className="grid h-20 card bg-neutral-800 rounded-box place-items-center w-80">content</div>
+      <div className='place-content-center'>
+        <div className='divider py-5' style={{width: "40vw"}}></div>
+      </div>
+
+      <div className="flex flex-col pb-5">
+        <div>
+          <h1 className='text-red-200 text-lg pb-1 p-3'>Net Profit</h1>
+        </div>
+
+        <div>
+          <div className="grid h-20 card bg-neutral-800 rounded-box place-items-center w-80" style={{width: "30vw"}}></div>
         </div>
       </div>
+        
     
     </main>
   )
