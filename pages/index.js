@@ -7,27 +7,41 @@ import * as sdk from "@hxronetwork/parimutuelsdk"
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  let data = ""
+  
+  let data = "";
 
-  const [walletKey, setWalletKey] = useState()
+  const [walletKey, setWalletKey] = useState();
+  const [netProfit, setNetProfit] = useState();
+  const [vecLamports, setvecLamports] = useState([]);
+  const [vecHoneypots, setvecHoneypots] = useState([]);
+  const [pubkeyFilter, setPubkeyFilter] = useState("");
+
+  const [paris, setParis] = useState(null);
+  const usdcDec = 1_000_000;
 
   const getWalletKey = () => {
   
+    setPubkeyFilter(walletKey);
 
      //obtener el valor del field
-    data = walletKey;
-    console.log(data)
 
     //conectar con hxro 
 
-    
+
     //obtener las apuestas
+
 
     //filtrar con el numero de wallet
     //mostrar el resultado
 
-    
+
   }
+
+  const filterByPubkey = () => {
+    const filteredParis = paris.filter((pari) => pari.pubkey === pubkeyFilter);
+    
+    console.log(filteredParis);
+  };
 
   const change = event => {
     setWalletKey(event.target.value)
@@ -57,9 +71,27 @@ export default function Home() {
       console.log("Intervalos de tiempo", markets);
 
       const parimutuels = await parimutuelWeb3.getParimutuels(markets, 5);
-      console.log("No c", parimutuels);
+
+      let netProfit = 0;
+      let vecHoneypots = [];
+      let vecLamports = [];
+
+      for (let i = 0; i < parimutuels.length; i++) {
+        vecLamports.push(parimutuels[i].account.lamports);
+        vecHoneypots.push(parimutuels[i].info.parimutuel.honeypot);
+        netProfit = netProfit + vecLamports[i]
+        // console.log("Pubkey:", i, parimutuels[i].pubkey.toBase58())
+      }
+
+      setNetProfit(netProfit / 1_000_000)
+      setvecLamports(vecLamports)
+      setvecHoneypots(vecHoneypots)
+
+      setParis(parimutuels);
     };
+
     getParis();
+
   }, []);
 
   return (
@@ -99,7 +131,7 @@ export default function Home() {
           />
           <button className="btn m-2 btn-active btn-ghost text-red-200"
             style = { { backgroundColor: "#262626" } }
-            onClick = {getWalletKey}>Get Started</button>
+            onClick = {filterByPubkey}>Get Started</button>
         </div>
       </div>
 
@@ -124,36 +156,36 @@ export default function Home() {
                   {/* row 1 */}
                   <tr>
                     <th>1</th>
-                    <td>---</td>
-                    <td>---</td>
-                    <td>---</td>
+                  <td> {vecLamports[0]} </td>
+                  
+                  <td> {  } </td>
                   </tr>
                   {/* row 2 */}
                   <tr>
                     <th>2</th>
                     <td>---</td>
-                    <td>---</td>
+                    <td> { vecLamports[1] } </td>
                     <td>---</td>
                   </tr>
                   {/* row 3 */}
                   <tr>
                     <th>3</th>
                     <td>---</td>
-                    <td>---</td>
+                    <td> { vecLamports[2] } </td>
                     <td>---</td>
                   </tr>
                   {/* row 4 */}
                   <tr>
                     <th>4</th>
                     <td>---</td>
-                    <td>---</td>
+                    <td> { vecLamports[3] } </td>
                     <td>---</td>
                   </tr>
                   {/* row 5 */}
                   <tr>
                     <th>5</th>
                     <td>---</td>
-                    <td>---</td>
+                    <td> { vecLamports[4] } </td>
                     <td>---</td>
                   </tr>
                 </tbody>
@@ -177,7 +209,7 @@ export default function Home() {
             <div className="stats shadow bg-neutral-800" style={{width: "85%"}}> 
               <div className="stat">
                   <div className="stat-title">Profit</div>
-                  <div className="stat-value text-red-200">$--</div>
+                <div className="stat-value text-red-200">$ { netProfit }</div>
                   <div className="stat-desc">Net Gain</div>
                 </div>
                 
