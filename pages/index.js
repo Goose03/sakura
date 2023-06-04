@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [inputValue, setInputValue] = useState();
-
+ 
   const handleChange = () => {
     const inputValue = "null";
     setInputValue(inputValue);
