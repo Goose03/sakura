@@ -1,26 +1,56 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import {useState} from "react";
+import { useEffect, useState } from "react";
+import * as web3 from "@solana/web3.js"
+import * as sdk from "@hxronetwork/parimutuelsdk"
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default  function Home() {
 
   let data = ""
 
   const [walletKey, setWalletKey] = useState()
 
   const getWalletKey = () => {
+  
+
+     //obtener el valor del field
     data = walletKey;
-  };
+    console.log(data)
+
+
+
+    //conectar con hxro 
+
+    
+    //obtener las apuestas
+
+    //filtrar con el numero de wallet 
+    //mostrar el resultado 
+
+
+
+
+
+
+
+
+
+
+  }
 
   const change = event => {
     setWalletKey(event.target.value)
   }
 
-  const alertWalletKey = () => {
-    alert(data)
-  }
+  useEffect(() => {
+    const config = sdk.DEV_CONFIG
+    const rpc = web3.clusterApiUrl("devnet")
+    const connection = new web3.Connection(rpc, "confirmed")
+
+    console.log("Conectando con la red", config, rpc, connection)
+  }, [])
 
   return (
     <main
@@ -62,13 +92,6 @@ export default function Home() {
       <div className='place-content-center'>
         <div className='divider py-5' style={{width: "40vw"}}></div>
       </div>
-
-      <div>
-        <button className='bg-pink-400 px-4 py-1 rounded-md'
-        onClick = {alertWalletKey}> Oliwi apriétame por fi UwU
-        </button>
-      </div>
-      
 
       <div className="flex flex-col pb-5" style={{width: "30vw"}}> 
           <div>
