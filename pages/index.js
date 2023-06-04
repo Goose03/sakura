@@ -101,7 +101,7 @@ export default function Home() {
       <div className="navbar bg-neutral-800 ">
         <div className="flex-1">
           <Image
-              src="/sakura.png"
+              src="/Sakura_f.png"
               alt="Sakura"
               width={25}
               height={25}
@@ -115,7 +115,7 @@ export default function Home() {
           <summary className="m-1 btn bg-stone-900">ඞ</summary>
           <ul className="p-2 shadow menu dropdown-content bg-neutral-800 rounded-md w-52">
             <li><button onClick={refreshPage}>Log-out</button></li>
-            <li><a className="link link-hover" href='https://iconicmarkets.io'>Help</a></li>
+            <li><a className="link link-hover" href='https://dev.parimutuel.hxro.network'>Hxro.com</a></li>
           </ul>
         </details>
         </div>
@@ -206,7 +206,7 @@ export default function Home() {
         <div>
           <div className="grid card bg-neutral-800 rounded-box place-items-center" style={{width: "30vw"}}>
           
-            <div className="stats shadow bg-neutral-800" style={{width: "85%"}}> 
+            <div className="stats bg-neutral-800" style={{width: "85%"}}> 
               <div className="stat">
                   <div className="stat-title">Profit</div>
                 <div className="stat-value text-red-200">$ { netProfit }</div>
@@ -216,7 +216,7 @@ export default function Home() {
                 <div className="stat place-items-center ">
                   <div className="stat-title">Win Rate</div>
                   <div className="stat-value text-red-200">--%</div>
-                  <div className="stat-desc">↗︎ -- (-%)</div>
+                  <div className="stat-desc">Last five</div>
                 </div>
               </div>
             </div>
