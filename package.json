@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hxronetwork/parimutuelsdk": "^1.0.25",
     "autoprefixer": "10.4.14",
     "next": "13.4.4",
     "next.js": "^1.0.3",
