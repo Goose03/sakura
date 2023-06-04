@@ -15,9 +15,9 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-2 bg-stone-900 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between bg-stone-900 ${inter.className}`}
     >
-      <div className="navbar bg-neutral-800 rounded-box">
+      <div className="navbar bg-neutral-800 ">
         <div className="flex-1">
           <Image
               src="/sakura.png"
@@ -32,7 +32,7 @@ export default function Home() {
         <div className="flex-none">
         <details className="dropdown dropdown-end mb-1">
           <summary className="m-1 btn bg-stone-900">ඞ</summary>
-          <ul className="p-2 shadow menu dropdown-content bg-neutral-800 rounded-box w-52">
+          <ul className="p-2 shadow menu dropdown-content bg-neutral-800 rounded-md w-52">
             <li><a>Log-out</a></li>
             <li><a>Help</a></li>
           </ul>
@@ -40,20 +40,18 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='pt-20 place-content-center'>
-          <input type="text" placeholder="Your Wallet Here" className="input input-bordered w-96 bg-neutral-800"/>
-          <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}} 
-          onClick={()=>{
-            handleChange();
-          }}
-          >Get Started</button>
+      <div className='bg-cover bg-bottom' style={{backgroundImage: "url(https://pixy.org/download/4752790/)", width:'100%', justifyContent: "center" }}>
+        <div className='py-20 object-center' style={{marginLeft: "32vw"}}>
+            <input type="text" placeholder="Your Wallet Here" className="input input-bordered w-96 bg-neutral-800"/>
+            <button className="btn m-2 btn-active btn-ghost text-red-200" style={{backgroundColor: "#262626"}} 
+            onClick={()=>{
+              handleChange();
+            }}
+            >Get Started</button>
+        </div>
       </div>
-      <div className='place-content-center'>
-        <div className='divider py-5' style={{width: "40vw"}}></div>
-      </div>
-      
 
-      <div className="flex flex-col pb-5" style={{width: "30vw"}}> 
+      <div className="flex flex-col py-5" style={{width: "30vw"}}> 
           <div>
             <h1 className='text-red-200 text-lg pb-1 p-3'>Recent Gambles</h1>
           </div>
@@ -122,10 +120,24 @@ export default function Home() {
         </div>
 
         <div>
-          <div className="grid h-20 card bg-neutral-800 rounded-box place-items-center w-80" style={{width: "30vw"}}></div>
-        </div>
-      </div>
-        
+          <div className="grid card bg-neutral-800 rounded-box place-items-center" style={{width: "30vw"}}>
+          
+            <div className="stats shadow bg-neutral-800" style={{width: "85%"}}> 
+              <div className="stat">
+                  <div className="stat-title">Profit</div>
+                  <div className="stat-value text-red-200">$--</div>
+                  <div className="stat-desc">Net Gain</div>
+                </div>
+                
+                <div className="stat place-items-center ">
+                  <div className="stat-title">Win Rate</div>
+                  <div className="stat-value text-red-200">--%</div>
+                  <div className="stat-desc">↗︎ -- (-%)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>    
     
     </main>
   )
